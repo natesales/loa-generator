@@ -4,7 +4,7 @@ window.onload = function () {
 
     // Fix textarea newlines
     Array.prototype.forEach.call(document.getElementsByTagName("textarea"), function (elem) {
-        elem.placeholder = elem.placeholder.replace(/\\n/g, '\n');
+        elem.placeholder = elem.placeholder.replace(/\\n/g, "\n");
     });
 }
 
@@ -44,7 +44,7 @@ function load_peeringdb_data() {
 }
 
 function generate_loa() {
-    let prefixes = document.getElementById("form-prefixes").value.replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n').replace(/\n+$/, ""); // Remove duplicate newlines
+    let prefixes = document.getElementById("form-prefixes").value.replace(/(\r\n|\r|\n){2}/g, "$1").replace(/(\r\n|\r|\n){3,}/g, "$1\n").replace(/\n+$/, ""); // Remove duplicate newlines
     let peer_name = document.getElementById("form-peer-name").value;
     let peer_asn = document.getElementById("form-peer-asn").value.toUpperCase().replace("AS", "");
     let date = document.getElementById("form-date").value;
@@ -63,7 +63,7 @@ This letter serves to authorize AS` + peer_asn + ` (` + peer_name + `) to announ
 
 ` + prefixes + `
 
-As a representative of AS` + asn + ` (` + name + `) that is the owner of the prefix(es) and/or ASN, I hereby affirm that I'm authorized to represent and sign for this LOA.
+As a representative of AS` + asn + ` (` + name + `) that is the owner of the prefix(es) and/or ASN, I hereby affirm that I"m authorized to represent and sign for this LOA.
 `
     if (notes !== "") {
         loa_body += "\n" + notes + "\n"
@@ -84,12 +84,24 @@ Sincerely,
     return loa_body
 }
 
-function open_text_loa() {
+function save_text_loa() {
     if (!form_ok()) {
         return
     }
+
+    let peer_asn = document.getElementById("form-peer-asn").value.toUpperCase().replace("AS", "");
     let loa_body = "Letter of Authorization\n\n" + generate_loa();
-    window.open('data:text;base64,' + btoa(loa_body.replace(/\n/g, '\r\n')), "_blank").focus();
+
+    let element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(loa_body));
+    element.setAttribute("download", "LoA_AS" + peer_asn + "_" + moment().format("MM-DD-YYYY") + ".txt");
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
 }
 
 function save_pdf_loa() {

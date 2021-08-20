@@ -1,0 +1,91 @@
+<!doctype>
+<html lang="en">
+
+<head>
+    <title>LoA Generator</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script crossorigin="anonymous"
+            integrity="sha512-VKjwFVu/mmKGk0Z0BxgDzmn10e590qk3ou/jkmRugAkSTMSIRkd4nEnk+n7r5WBbJquusQEQjBidrBD3IQQISQ=="
+            referrerpolicy="no-referrer"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+            referrerpolicy="no-referrer"
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+<h1>LoA Generator</h1>
+
+<form action="#" id="form">
+    <label>
+        ASN
+        <input id="form-asn" onblur="load_peeringdb_data()" placeholder="65530" required type="number">
+    </label>
+
+    <label>
+        Network Name
+        <input id="form-network-name" required type="text">
+    </label>
+
+    <br>
+
+    <label>
+        Peer ASN
+        <input id="form-peer-asn" onblur="load_peeringdb_data()" placeholder="65531" required type="number">
+    </label>
+
+    <label>
+        Peer Name
+        <input id="form-peer-name" required type="text">
+    </label>
+
+    <br>
+
+    <label>
+        Contact Name
+        <input id="form-contact-name" placeholder="John Doe" required type="text">
+    </label>
+
+    <label>
+        Contact Email
+        <input id="form-email" placeholder="noc@example.com" required type="email">
+    </label>
+
+    <br>
+
+    <label>
+        Contact Phone
+        <input id="form-phone" placeholder="+1 (123) 456 7890" type="text">
+    </label>
+
+    <label>
+        Date
+        <input id="form-date" required type="date">
+    </label>
+
+    <br>
+
+    <label>
+        Prefixes
+        <textarea id="form-prefixes" placeholder="192.0.2.0/24\n203.0.113.0/24 origin 65590\n2001:db8::/32 le 48"
+                  required></textarea>
+    </label>
+
+    <br>
+
+    <details>
+        <summary>Notes</summary>
+        <textarea id="form-notes"></textarea>
+    </details>
+
+    <button onclick="save_pdf_loa()" type="submit">Download PDF</button>
+    <button onclick="open_text_loa()" type="submit">Download text</button>
+</form>
+
+</body>
+
+<script src="script.js"></script>
+</html>

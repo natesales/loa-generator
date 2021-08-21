@@ -63,7 +63,7 @@ This letter serves to authorize AS` + peer_asn + ` (` + peer_name + `) to announ
 
 ` + prefixes + `
 
-As a representative of AS` + asn + ` (` + name + `) that is the owner of the prefix(es) and/or ASN, I hereby affirm that I"m authorized to represent and sign for this LOA.
+As a representative of AS` + asn + ` (` + name + `) that is the owner of the prefix(es) and/or ASN, I hereby affirm that I'm authorized to represent and sign for this LOA.
 `
     if (notes !== "") {
         loa_body += "\n" + notes + "\n"

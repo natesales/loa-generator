@@ -20,3 +20,7 @@
     --variable: #d941e2;
     --highlight: #ffffff;
 }
+
+img {
+    max-width: 800px;
+}

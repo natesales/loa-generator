@@ -6,6 +6,10 @@ window.onload = function () {
     Array.prototype.forEach.call(document.getElementsByTagName("textarea"), function (elem) {
         elem.placeholder = elem.placeholder.replace(/\\n/g, "\n");
     });
+
+    // Bind image load handler
+    let img = document.getElementById("form-logo");
+    img.addEventListener("change", load_image, false);
 }
 
 function form_ok() {
@@ -109,11 +113,37 @@ function save_pdf_loa() {
         return
     }
     let doc = new jspdf.jsPDF();
+
+    let header_height = 20;
+    let body_height = 30;
+
+    // Image
+    let logo = document.getElementById("logo-preview");
+    if (logo.src !== "") {
+        header_height = 50;
+        body_height = 60;
+
+        let target_height = 20;
+        let target_width = (logo.clientWidth/logo.clientHeight)*target_height;
+        doc.addImage(logo.src, 20, 20, target_width, target_height, "NONE", 0);
+    }
+
     doc.setFontSize(20);
-    doc.text(20, 20, "Letter of Authorization");
+    doc.text(20, header_height, "Letter of Authorization");
+
     doc.setFontSize(12);
     let loa_body = generate_loa();
-    doc.text(20, 30, doc.splitTextToSize(loa_body, 180));
+    doc.text(20, body_height, doc.splitTextToSize(loa_body, 180));
     let peer_asn = document.getElementById("form-peer-asn").value.toUpperCase().replace("AS", "");
     doc.save("LoA_AS" + peer_asn + "_" + moment().format("MM-DD-YYYY") + ".pdf");
+}
+
+function load_image(e) {
+    let logo_preview = document.getElementById("logo-preview");
+
+    let reader = new FileReader();
+    reader.onload = function (event) {
+        logo_preview.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);
 }

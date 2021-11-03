@@ -1,3 +1,5 @@
 # LoA Generator
 
-https://natesales.net/loa-generator
+Quickly generate LOAs (PDF or plaintext) in your browser.
+
+![Screenshot](screenshot.png)

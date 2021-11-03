@@ -2,4 +2,4 @@
 
 Quickly generate LOAs (PDF or plaintext) in your browser.
 
-![Screenshot](screenshot.png)
+<img style="width: 450px" alt="Screenshot" src="screenshot.png"></img>

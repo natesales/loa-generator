@@ -27,39 +27,39 @@
     </svg>
 </a>
 
-<form action="#" id="form">
+<div id="form">
     <label>
-        ASN
-        <input id="form-asn" onblur="load_peeringdb_data()" placeholder="65530" required type="number">
+        ASN*
+        <input id="form-asn" onblur="load_peeringdb_data()" placeholder="65530" type="number">
     </label>
 
     <label>
-        Network Name
-        <input id="form-network-name" required type="text">
-    </label>
-
-    <br>
-
-    <label>
-        Peer ASN
-        <input id="form-peer-asn" onblur="load_peeringdb_data()" placeholder="65531" required type="number">
-    </label>
-
-    <label>
-        Peer Name
-        <input id="form-peer-name" required type="text">
+        Network Name*
+        <input id="form-network-name" type="text">
     </label>
 
     <br>
 
     <label>
-        Contact Name
-        <input id="form-contact-name" placeholder="John Doe" required type="text">
+        Peer ASN*
+        <input id="form-peer-asn" onblur="load_peeringdb_data()" placeholder="65531" type="number">
     </label>
 
     <label>
-        Contact Email
-        <input id="form-email" placeholder="noc@example.com" required type="email">
+        Peer Name*
+        <input id="form-peer-name" type="text">
+    </label>
+
+    <br>
+
+    <label>
+        Contact Name*
+        <input id="form-contact-name" placeholder="John Doe" type="text">
+    </label>
+
+    <label>
+        Contact Email*
+        <input id="form-email" placeholder="noc@example.com" type="email">
     </label>
 
     <br>
@@ -70,14 +70,14 @@
     </label>
 
     <label>
-        Date
-        <input id="form-date" required type="date">
+        Date*
+        <input id="form-date" type="date">
     </label>
 
     <br>
 
     <label>
-        Prefixes
+        Prefixes*
         <textarea id="form-prefixes" placeholder="192.0.2.0/24\n203.0.113.0/24 origin 65590\n2001:db8::/32 le 48"
                   required></textarea>
     </label>

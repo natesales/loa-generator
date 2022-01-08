@@ -98,16 +98,40 @@
         <textarea id="form-notes"></textarea>
     </details>
 
-    <br>
-
     <div>
-        <button onclick="save_pdf_loa()" type="submit">Save PDF</button>
-        <button onclick="gen_text_loa(true)" type="submit">Save text</button>
+        <h4>PDF:</h4>
+
+        <!-- Save PDF -->
+        <button onclick="save_pdf_loa()">
+            <svg class="i-import" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                <path d="M28 22 L28 30 4 30 4 22 M16 4 L16 24 M8 16 L16 24 24 16"></path>
+            </svg>
+        </button>
+
+        <!-- Open PDF -->
+        <button onclick="open_pdf_loa()">
+            <svg class="i-external" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18"></path>
+            </svg>
+        </button>
     </div>
 
     <div>
-        <button onclick="open_pdf_loa()" type="submit">Open PDF</button>
-        <button onclick="gen_text_loa(false)" type="submit">Open text</button>
+        <h4>Plain text:</h4>
+
+        <!-- Save text -->
+        <button onclick="gen_text_loa(true)">
+            <svg class="i-import" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                <path d="M28 22 L28 30 4 30 4 22 M16 4 L16 24 M8 16 L16 24 24 16"></path>
+            </svg>
+        </button>
+
+        <!-- Open text -->
+        <button onclick="gen_text_loa(false)">
+            <svg class="i-external" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18"></path>
+            </svg>
+        </button>
     </div>
 </div>
 

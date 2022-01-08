@@ -30,36 +30,36 @@
 <div id="form">
     <label>
         ASN*
-        <input required id="form-asn" onblur="load_peeringdb_data()" placeholder="65530" type="number">
+        <input id="form-asn" onblur="load_peeringdb_data()" placeholder="65530" required type="number">
     </label>
 
     <label>
         Network Name*
-        <input required id="form-network-name" type="text">
+        <input id="form-network-name" required type="text">
     </label>
 
     <br>
 
     <label>
         Peer ASN*
-        <input required id="form-peer-asn" onblur="load_peeringdb_data()" placeholder="65531" type="number">
+        <input id="form-peer-asn" onblur="load_peeringdb_data()" placeholder="65531" required type="number">
     </label>
 
     <label>
         Peer Name*
-        <input required id="form-peer-name" type="text">
+        <input id="form-peer-name" required type="text">
     </label>
 
     <br>
 
     <label>
         Contact Name*
-        <input required id="form-contact-name" placeholder="John Doe" type="text">
+        <input id="form-contact-name" placeholder="John Doe" required type="text">
     </label>
 
     <label>
         Contact Email*
-        <input required id="form-email" placeholder="noc@example.com" type="email">
+        <input id="form-email" placeholder="noc@example.com" required type="email">
     </label>
 
     <br>
@@ -71,14 +71,14 @@
 
     <label>
         Date*
-        <input required id="form-date" type="date">
+        <input id="form-date" required type="date">
     </label>
 
     <br>
 
     <label>
         Prefixes*
-        <textarea required id="form-prefixes" placeholder="192.0.2.0/24\n203.0.113.0/24 origin 65590\n2001:db8::/32 le 48"></textarea>
+        <textarea id="form-prefixes" placeholder="192.0.2.0/24\n203.0.113.0/24 origin 65590\n2001:db8::/32 le 48" required></textarea>
     </label>
 
     <label>

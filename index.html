@@ -1,4 +1,4 @@
-<!doctype>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -91,7 +91,7 @@
 
     <br>
 
-    <img alt="" id="logo-preview"/>
+    <img alt="" id="logo-preview" style="display: none"/>
 
     <details>
         <summary>Notes</summary>
@@ -100,9 +100,16 @@
 
     <br>
 
-    <button onclick="save_pdf_loa()" type="submit">Download PDF</button>
-    <button onclick="save_text_loa()" type="submit">Download text</button>
-</form>
+    <div>
+        <button onclick="save_pdf_loa()" type="submit">Save PDF</button>
+        <button onclick="gen_text_loa(true)" type="submit">Save text</button>
+    </div>
+
+    <div>
+        <button onclick="open_pdf_loa()" type="submit">Open PDF</button>
+        <button onclick="gen_text_loa(false)" type="submit">Open text</button>
+    </div>
+</div>
 
 </body>
 

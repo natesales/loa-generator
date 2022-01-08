@@ -29,11 +29,15 @@ body {
 
 .flex-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 img {
     max-width: 800px;
+}
+
+h1 {
+    margin: 25px;
 }
 
 .github-corner:hover .octo-arm {

@@ -30,36 +30,36 @@
 <div id="form">
     <label>
         ASN*
-        <input id="form-asn" onblur="load_peeringdb_data()" placeholder="65530" type="number">
+        <input required id="form-asn" onblur="load_peeringdb_data()" placeholder="65530" type="number">
     </label>
 
     <label>
         Network Name*
-        <input id="form-network-name" type="text">
+        <input required id="form-network-name" type="text">
     </label>
 
     <br>
 
     <label>
         Peer ASN*
-        <input id="form-peer-asn" onblur="load_peeringdb_data()" placeholder="65531" type="number">
+        <input required id="form-peer-asn" onblur="load_peeringdb_data()" placeholder="65531" type="number">
     </label>
 
     <label>
         Peer Name*
-        <input id="form-peer-name" type="text">
+        <input required id="form-peer-name" type="text">
     </label>
 
     <br>
 
     <label>
         Contact Name*
-        <input id="form-contact-name" placeholder="John Doe" type="text">
+        <input required id="form-contact-name" placeholder="John Doe" type="text">
     </label>
 
     <label>
         Contact Email*
-        <input id="form-email" placeholder="noc@example.com" type="email">
+        <input required id="form-email" placeholder="noc@example.com" type="email">
     </label>
 
     <br>
@@ -71,15 +71,19 @@
 
     <label>
         Date*
-        <input id="form-date" type="date">
+        <input required id="form-date" type="date">
     </label>
 
     <br>
 
     <label>
         Prefixes*
-        <textarea id="form-prefixes" placeholder="192.0.2.0/24\n203.0.113.0/24 origin 65590\n2001:db8::/32 le 48"
-                  required></textarea>
+        <textarea required id="form-prefixes" placeholder="192.0.2.0/24\n203.0.113.0/24 origin 65590\n2001:db8::/32 le 48"></textarea>
+    </label>
+
+    <label>
+        Notes
+        <textarea id="form-notes"></textarea>
     </label>
 
     <br>
@@ -89,52 +93,56 @@
         <input alt="Network Logo" id="form-logo" type="file"/>
     </label>
 
-    <br>
-
     <img alt="" id="logo-preview" style="display: none"/>
 
-    <details>
-        <summary>Notes</summary>
-        <textarea id="form-notes"></textarea>
-    </details>
+    <div class="flex-row">
+        <div>
+            <h4>Generate PDF</h4>
 
-    <div>
-        <h4>PDF:</h4>
+            <!-- Save PDF -->
+            <button onclick="save_pdf_loa()">
+                <svg class="i-import" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                    <path d="M28 22 L28 30 4 30 4 22 M16 4 L16 24 M8 16 L16 24 24 16"></path>
+                </svg>
+            </button>
 
-        <!-- Save PDF -->
-        <button onclick="save_pdf_loa()">
-            <svg class="i-import" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
-                <path d="M28 22 L28 30 4 30 4 22 M16 4 L16 24 M8 16 L16 24 24 16"></path>
-            </svg>
-        </button>
+            <!-- Open PDF -->
+            <button onclick="open_pdf_loa()">
+                <svg class="i-external" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                    <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18"></path>
+                </svg>
+            </button>
+        </div>
 
-        <!-- Open PDF -->
-        <button onclick="open_pdf_loa()">
-            <svg class="i-external" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
-                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18"></path>
-            </svg>
-        </button>
-    </div>
+        <div>
+            <h4>Reset LoA</h4>
 
-    <div>
-        <h4>Plain text:</h4>
+            <button onclick="reset_loa()">
+                <svg class="i-trash" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                    <path d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6"></path>
+                </svg>
+            </button>
+        </div>
 
-        <!-- Save text -->
-        <button onclick="gen_text_loa(true)">
-            <svg class="i-import" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
-                <path d="M28 22 L28 30 4 30 4 22 M16 4 L16 24 M8 16 L16 24 24 16"></path>
-            </svg>
-        </button>
+        <div>
+            <h4>Generate plaintext</h4>
 
-        <!-- Open text -->
-        <button onclick="gen_text_loa(false)">
-            <svg class="i-external" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
-                <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18"></path>
-            </svg>
-        </button>
+            <!-- Save text -->
+            <button onclick="gen_text_loa(true)">
+                <svg class="i-import" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                    <path d="M28 22 L28 30 4 30 4 22 M16 4 L16 24 M8 16 L16 24 24 16"></path>
+                </svg>
+            </button>
+
+            <!-- Open text -->
+            <button onclick="gen_text_loa(false)">
+                <svg class="i-external" fill="none" height="16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 32 32" width="16">
+                    <path d="M14 9 L3 9 3 29 23 29 23 18 M18 4 L28 4 28 14 M28 4 L14 18"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 </div>
-
 </body>
 
 <script src="script.js"></script>

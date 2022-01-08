@@ -22,6 +22,18 @@ window.onload = function () {
     // document.getElementById("form-notes").value = "This\nis\na\ntest";
 }
 
+function reset_loa() {
+    document.getElementById("form-prefixes").value = "";
+    document.getElementById("form-network-name").value = "";
+    document.getElementById("form-asn").value = undefined;
+    document.getElementById("form-peer-name").value = "";
+    document.getElementById("form-peer-asn").value = undefined;
+    document.getElementById("form-contact-name").value = "";
+    document.getElementById("form-email").value = "";
+    document.getElementById("form-phone").value = "";
+    document.getElementById("form-notes").value = "";
+}
+
 function date_string() {
     let today = new Date();
     return `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`

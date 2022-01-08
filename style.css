@@ -21,6 +21,17 @@
     --highlight: #ffffff;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-around;
+}
+
 img {
     max-width: 800px;
 }

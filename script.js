@@ -1,6 +1,6 @@
 window.onload = function () {
     // Set date selector to current date
-    document.getElementById("form-date").value = moment().format("YYYY-MM-DD");
+    document.getElementById("form-date").valueAsDate = new Date();
 
     // Fix textarea newlines
     Array.prototype.forEach.call(document.getElementsByTagName("textarea"), function (elem) {
@@ -59,7 +59,7 @@ function generate_loa() {
     let contact_phone = document.getElementById("form-phone").value;
     let notes = document.getElementById("form-notes").value.replace(/\n+$/, ""); // Remove trailing newline
 
-    let loa_body = moment(date).format("MMMM D, YYYY") + `
+    let loa_body = new Date(date).toLocaleDateString() + `
 
 To whom it may concern,
 

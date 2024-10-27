@@ -3,6 +3,7 @@
     import ModeSwitch from "../components/ModeSwitch.svelte";
     import ButtonBar from "../components/ButtonBar.svelte";
     import {onMount} from "svelte";
+    import {jsPDF} from "jspdf";
 
     let logo;
 
@@ -178,33 +179,32 @@ Media Type: ${args.xc.mediaType}
     function savePDF() {
         if (!validateForm()) return;
 
-        let doc = new jspdf.jsPDF();
+        let doc = new jsPDF();
 
-        let header_height = 20;
-        let body_height = 30;
+        let headerHeight = 20;
+        let bodyHeight = 30;
 
         // Image
         if (logo.src !== "") {
-            header_height = 50;
-            body_height = 60;
+            headerHeight = 50;
+            bodyHeight = 60;
 
-            let target_height = 20;
-            let target_width = (logo.clientWidth / logo.clientHeight) * target_height;
-            doc.addImage(logo.src, 20, 20, target_width, target_height, "NONE", 0);
+            let targetHeight = 20;
+            let targetWidth = (logo.clientWidth / logo.clientHeight) * targetHeight;
+            doc.addImage(logo.src, "JPEG", 20, 20, targetWidth, targetHeight, "", "NONE", 0)
         }
 
         doc.setFontSize(20);
-        doc.text(20, header_height, "Letter of Authorization");
+        doc.text("Letter of Authorization", 20, headerHeight);
 
         doc.setFontSize(12);
-        doc.text(20, body_height, doc.splitTextToSize(generate(), 180));
+        doc.text(doc.splitTextToSize(generate(), 180), 20, bodyHeight);
         doc.save(filename() + ".pdf");
     }
 </script>
 
 <svelte:head>
     <title>LoA Generator</title>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.0/dist/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="water.min.css">
 </svelte:head>
 

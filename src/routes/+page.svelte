@@ -292,12 +292,17 @@ Media Type: ${args.xc.mediaType}
                 Prefixes*
                 <textarea bind:value={args.bgp.prefixes} placeholder="192.0.2.0/24" required></textarea>
             </label>
-        {/if}
 
-        <label class="wide">
-            Notes
-            <textarea rows="4" bind:value={args.notes}></textarea>
-        </label>
+            <label>
+                Notes
+                <textarea bind:value={args.notes}></textarea>
+            </label>
+        {:else}
+            <label class="wide">
+                Notes
+                <textarea rows="4" bind:value={args.notes}></textarea>
+            </label>
+        {/if}
 
         <br>
 

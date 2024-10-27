@@ -36,6 +36,29 @@
 
     let args = zeroArgs();
 
+    let isMounted = false;
+    onMount(() => {
+        isMounted = true;
+    })
+    $: {
+        if (isMounted) {
+            let params = new URLSearchParams();
+            setParams(params, args, "");
+            window.history.replaceState({}, "", window.location.pathname + "?" + params.toString());
+        }
+    }
+
+    function setParams(params, cfg, prefix) {
+        Object.keys(cfg).forEach(key => {
+            if (key === "date" || (key === "mode" && cfg[key] === "bgp")) return;
+            if (typeof cfg[key] === "object") {
+                setParams(params, cfg[key], prefix + key + ".");
+            } else if (cfg[key] !== "") {
+                params.set(prefix + key, cfg[key]);
+            }
+        });
+    }
+
     function setArgs(params, cfg, prefix) {
         Object.keys(cfg).forEach(key => {
             if (typeof cfg[key] === "object") {
